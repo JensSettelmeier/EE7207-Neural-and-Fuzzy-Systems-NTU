@@ -1,7 +1,7 @@
 function phi = big_Phi(data,centrum,sigma)
 [number_of_sample, ~] = size(data);
 [number_of_centren,~] = size(centrum);
-% check if m == input_dimension
+
 phi = zeros(number_of_sample,number_of_centren);
     
     for i=1:number_of_centren
