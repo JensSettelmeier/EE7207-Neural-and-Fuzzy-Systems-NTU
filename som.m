@@ -1,21 +1,21 @@
 % note we update only the winning neuron
 
 function W = som(data,numNeurons, learning_rate, epsilon, iter_limit)
-    [~,m] = size(data);
+    [q,m] = size(data);
     n_0 = learning_rate;
     W = randn(numNeurons,m); % the probability to get two equal rows is 0.
     W = W/norm(W);
     delta = epsilon +1;
-    iter = 0;
+    iter = 1;
     data_copy = data;
     while delta > epsilon && iter<iter_limit
         % random selection of sample from data set and making sure in the
         % next iteration it can not be drawn again
-        iter2 = mod(iter,m);
+        iter2 = mod(iter,q);
         if iter2 == 0
             data_copy = data;
         end
-        i = randi([1,m-iter2],1,1);
+        i = randi([1,q-iter2],1,1);
         x = data_copy(i,:);
         [n_2,~] = size(data_copy);
         filter_i =setdiff([1:n_2],i); 
